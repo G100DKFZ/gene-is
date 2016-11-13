@@ -1,0 +1,59 @@
+function evaluate(best,strand,posizione,id,len,seq,name,side) {
+	split(best,campi,"\t")
+	if(side==0) {
+		if(campi[9]>campi[10]) {
+			genoPos=campi[10];
+			genoStr="-"
+		}
+		else {
+			genoPos=campi[10]
+			genoStr="+"
+		}
+	} else {
+		if(campi[9]>campi[10]) {
+			genoPos=campi[9];
+			genoStr="+"
+		}
+		else {
+			genoPos=campi[10]
+			genoStr="-"
+		}
+	}
+	print id,campi[2],name,genoPos,posizione,genoStr,strand,ostia,campi[3],len,seq
+}
+BEGIN {
+	best=""
+
+}
+{
+	split($1,vect,"@");
+
+	if(prec!=$1) {
+		if(best!="") {
+			evaluate(best,strand,posizione,id,len,seq,name,side);
+		}
+		id=vect[1]
+		best=$0;
+		score=$NR;
+		prec=$1
+		name=vect[2]
+		strand=vect[4]
+		posizione=vect[3]
+		len=vect[5]
+		seq=vect[6]
+		side=vect[7]
+	}
+	else {
+		if(best!="") {
+			if ($NR==score)
+				# most of the vector aligned sequeces are found in both ITR. So same score in vector is allowed
+				if ($2!=vectorStr)
+					best="";
+		}
+	}
+}
+END  {
+	if(best!="") {
+		evaluate(best,strand,posizione,id,len,seq,name,side);
+	}
+}	

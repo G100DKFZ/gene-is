@@ -1,0 +1,62 @@
+##################################################################
+GENERAL STATISTICS
+##################################################################
+ 
+ 
+Number of raw read pairs
+10000
+ 
+Number of filtered and trimmed read pairs
+0
+ 
+Number of unclustered Integration Sites (sequence_count) 
+
+ 
+Number of clustered Integration Sites
+0
+ 
+ 
+Number of unclustered MULTIPLE ALIGNED/REPEATS Integration Sites (sequence_count) 
+
+ 
+Number of clustered MULTIPLE ALIGNED/REPEATS Integration Sites
+0
+ 
+#################################################################
+ 
+ 
+Wrong barcode combinations detected
+(Ten highest counts of wrong barcode combinations are shown here)
+(For complete list of wrong barcodes see file 'wrongBC_.fastq')
+ 
+BC1             BC2           Count
+TGAGTGCTCGGATCC	AGTGGCACAGCAGTT	477
+AGCTCTCAGAGATCC	AGTGGCACAGCAGTT	317
+TGTCGTGCTGGATCC	AGTGGCACAGCAGTT	273
+TCGTACGTGAGATCC	AGTGGCACAGCAGTT	236
+CATCGCGACTGATCC	AGTGGCACAGCAGTT	233
+TAGCACAGATGATCC	AGTGGCACAGCAGTT	200
+ATCTGTAGACGATCC	AGTGGCACAGCAGTT	196
+CTATATGTATGATCC	AGTGGCACAGCAGTT	188
+CATGCAGCGAGATCC	AGTGGCACAGCAGTT	174
+CACTACTGCTGATCC	AGTGGCACAGCAGTT	168
+ 
+#################################################################
+ 
+Parameters used for analysis
+ 
+len: 
+25
+ 
+alScore:
+0.95
+ 
+range:
+3
+ 
+notMatchThreshold:
+1000
+ 
+ 
+#################################################################
+#################################################################

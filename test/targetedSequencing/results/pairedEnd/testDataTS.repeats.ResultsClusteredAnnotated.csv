@@ -1,0 +1,7 @@
+Chr,IS,Strand,Seq_Count,RefSeq_ID,Gene_Strand,Gene_Name,Gene_Length,Dist_to_TSS,Upstream,Downstream,Intron_Exon
+chr1,44846,+,1,NR_026822,-,FAM138C,1471, ,8765, ,,
+chr1,44924,+,3,NR_026822,-,FAM138C,1471, ,8843, ,,
+chr13,57055,-,1,NR_027278,+,FAM230C,36720, ,18138242, ,,
+chr13,57091,+,1,NR_027278,+,FAM230C,36720, ,18138206, ,,
+chr13,67792,-,2,NR_027278,+,FAM230C,36720, ,18127505, ,,
+chr13,67806,+,1,NR_027278,+,FAM230C,36720, ,18127491, ,,

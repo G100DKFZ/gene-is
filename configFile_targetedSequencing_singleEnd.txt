@@ -1,0 +1,93 @@
+###########################################################################
+#######	     Configuration File for Targeted Sequencing 	   ########
+#######    (SureSelect/Agilent) Single End Data Analysis           ########
+###########################################################################
+#Path to script directory (script directory is in main folder of GENE-IS_1.0)
+scriptDir=$GENIS/scripts
+#Path to libraries containing directory (script directory is in main folder of GENE-IS_1.0)
+libDir=$GENIS/lib
+#Data analysis type is Targeted Sequencing (SureSelect/AGILENT) (DO NOT CHANGE)
+type=AGILENT
+#Number of possible parallel alignments
+threads=8
+
+#############################################################################
+#############################################################################
+## 			Input data files 
+#############################################################################
+##Provide path to forward fastq  file
+forward   =  $GENIS/test/targetedSequencing/testData.TS.pair1.fastq.gz
+
+#provide sample name PREFIX that would be used as prefix for final result file
+#Please do not include any space or strange characters
+sampleName = testDataTS
+#############################################################################
+#############################################################################
+## 	Quality filtration and adapter trimming parameters
+#############################################################################
+#Quality filtration values (Use default value 20 or provide integer values only)
+qual= 20
+
+#Use deafault Illumina adapters to remove from raw fastq file or provide your own.
+#Adapter to Trim from forward file
+adaptF = GATCGGAAGAGCACACGTCTGAACTCCAGTCAC
+#Use default output file names for forward file  (DO NOT CHANGE)
+suffOut = filtTrim
+#############################################################################
+#############################################################################
+## 	Reference fasta file and indexed files
+#############################################################################
+# The following parameter contain the alignment filename (DO NOT CHANGE)
+alignmentOut = completAlignment
+
+##Provide path to the directory containing BWA aligner based index files and fasta file for refernce+vector genome
+genomeVectorIndex=$GENIS/test/datasets/testGenomeVector.fa 
+genomeVector= $GENIS/test/datasets/VECTOR.fa
+
+#Specify the exact vector name that is mentioned in the refernce/vector fasta sequence file
+vectorString = VECTOR
+
+#Minimum alignment identity percentage for re-alignment step with BLAT (default value 95)
+minIden=95
+#This is the value between primary alignment and secondary alignment for a sequence read (default value 0.9)
+alScore=0.9
+#For topographical clustering that is genome IS position based clustering user can specify range of clustering (default value 10)
+range=10
+#############################################################################
+#############################################################################
+## 			Third-party tools
+# Provide path to these third-party tools
+#############################################################################
+#Provide path to the BWA aligner
+aligner     = $GENIS/tools/bin/bwa 
+#############################################################################
+#Provide path to the secondary aligner. (BLAT)
+#megaAligner = megablast
+blatAligner =  $GENIS/tools/bin/blat
+#Path to the BLAT indexed file of refernce genome and vector.
+genomeVectorIndexBlat=$GENIS/test/datasets/testGenomeVector.fa.2bit
+#Path to the trimming and filtering tool (Skewer)
+skewer = $GENIS/tools/bin/skewer
+#Path to the Samtools
+samtools= $GENIS/tools/bin/samtools
+#Path to the bedtools
+bedTools= $GENIS/tools/bin/bedtools
+############################################################################
+#Files path required for annotation
+#a complete UCSC refSeq table downloaded from UCSC (should be in text format)
+UCSCAnnoFile= $GENIS/test/datasets/UCSC.anno.table_hg38.txt
+############################################################################
+############################################################################
+#For approx IS extraction (TRUE/FALSE)
+approxIS=FALSE
+#Provide path to individual separate BWA based indexed fasta files for vector and for reference genome respectively.
+vectorIndexOut = $GENIS/test/datasets/VECTOR.fa
+genomeIndexOut = $GENIS/test/datasets/testOnlyGenome.fa
+############################################################################
+############################################################################
+#For extra stringent filtering of IS reads
+#(Recommended only in cases where vector contains transgene which is higly homologus to refernce genome region)
+#(It can also cause loss of real IS)
+extraFilt=FALSE
+############################################################################
+############################################################################

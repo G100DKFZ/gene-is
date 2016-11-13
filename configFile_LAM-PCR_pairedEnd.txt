@@ -1,0 +1,110 @@
+###########################################################################
+#######      Configuration File for LAM-PCR Sequencing             ########
+#######    		Paired End Data Analysis	           ########
+###########################################################################
+#Path to script directory (script directory is in main folder of GENE-IS_1.0)
+scriptDir=$GENIS/scripts
+#Path to libraries containing directory (lib directory is in main folder of GENE-IS_1.0)
+libDir=$GENIS/lib
+#Number of possible parallel alignments
+threads=4
+#Number of reads in a split batch for parallel barcode sorting steps
+group=2000000 
+##########################################################################
+####### Experimental parameters (Barcodes sorting parameters)       ######
+##########################################################################
+#Choose one of these three options for lamType parameter "sorting|extracting|both"
+#To perform only barcode sorting without IS analysis use "sorting"
+#To perform only IS analysis without barcode sorting use "extracting"
+#To perform barcode sorting and IS analysis use "both"
+lamType = both
+#Number of possible parallel barcode sorting
+barThreads =2
+#############################################################################
+#############################################################################
+##                      Input data files and additional Parameters
+#############################################################################
+# Provide path to both forward and reverse FASTQ files and path to tag table
+forward   = $GENIS/test/LAM-PCR/r1.gz
+reverse   = $GENIS/test/LAM-PCR/r2.gz
+tagTableName = $GENIS/test/LAM-PCR/tagTable.txt
+
+#provide run name PREFIX that would be used as prefix for final result file
+#Please do not include any space or strange characters
+runName = testRunLAM
+#Provide read ID prefix. Check in the raw fastq file and look at the header. 
+#Default is "@HWI". Maximum 4 characters
+readHeader = @HWI
+#############################################################################
+#Quality filtration values (default value 30 or provide integer values only)
+qual= 30
+#Minimum length for reads (default value 25)
+len=25
+#Name used as prefix
+lamPrefix=MiS
+
+#User can choose alignment score threshold value, which is actually multiple hits score threshold. 
+#This is the value between primary alignment and secondary alignment for a sequence read (default value 0.9)
+alScore=0.95
+#Minimum alignment identity percentage for re-alignment step with BLAT (default value 95)
+minIden=95
+
+#For topographical clustering that is genome IS position based clustering user can specify range of clustering (default value 10)
+range=3
+
+#User also have the option to provide value to “anchor” parameter, which is simply the LTR sequence that should be present and trimmed from the read
+anchor = CCACTCCCTCTCTGCGCGCT
+#The mismatches allowed in anchor (frequency of error)
+anchorMM = 0.1
+
+#This paramter allows user to decide maximum number of not-matched bases allowed before matching genomic part starts
+#With default value 1000 this threshold is disabled (Recommended is 5 for vectors with no deletions)
+#If you are using this parameter then you must provide the complete LTR sequence in the above "anchor" paramter
+notMatchThreshold=1000
+#############################################################################
+#############################################################################
+##      Reference fasta file and indexed files
+#############################################################################
+# The following parameter contain the alignment filename (DO NOT CHANGE)
+alignmentOut = completAlignment
+
+#Provide path to the directory containing BWA aligner based index files for refernce genome
+genomeVectorIndex=$GENIS/test/datasets/testGenomeVector.fa
+############################################################################
+#############################################################################
+##                      Third-party tools
+#############################################################################
+#Provide path to the BWA aligner
+aligner     = $GENIS/tools/bin/bwa
+
+#Path to the secondary aligner. (BLAT)
+blatAligner =  $GENIS/tools/bin/blat
+#Path to the BLAT indexed file of reference genome.
+genomeVectorIndexBlat=$GENIS/test/datasets/testGenomeVector.fa.2bit
+#############################################################################
+#Path to the trimming and filtering tool (Skewer)
+skewer = $GENIS/tools/bin/skewer
+#Path to the Samtools
+samtools= $GENIS/tools/bin/samtools
+#Path to the bedtools
+bedTools= $GENIS/tools/bin/bedtools
+############################################################################
+#Files path required for annotation
+#a complete UCSC refSeq table downloaded from UCSC (should be in text format)
+UCSCAnnoFile= $GENIS/test/datasets/UCSC.anno.table_hg38.txt
+############################################################################
+############################################################################
+#For approx IS extraction (TRUE/FALSE)
+approxIS=FALSE
+#Provide path to individual separate BWA based indexed fasta files for vector and for reference genome respectively.
+vectorIndexOut = $GENIS/test/datasets/VECTOR.fa
+genomeIndexOut = $GENIS/test/datasets/testOnlyGenome.fa
+############################################################################
+############################################################################
+#For extra stringent filtering of IS reads
+#(Recommended only in cases where vector contains transgene which is higly homologus to refernce genome region)
+#(It can also cause loss of real IS)
+extraFilt=FALSE
+############################################################################
+############################################################################
+############################################################################                                                   
