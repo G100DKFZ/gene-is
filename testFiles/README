@@ -1,0 +1,86 @@
+######################################################################################################################################################
+######################################################################################################################################################
+######################################################################################################################################################
+#
+#This README file contains instruction to run GENE-IS on our generated in silico data sets.
+#There are individual instructions to run GENE-IS on our in silico LAM-PCR 5750 dataset, on an in silico dataset taken from VISA consisting of 1000 seq,
+#and insilico dataset of targeted seqeuncing mode of GENE-IS comprising of 5600 seq.
+#
+######################################################################################################################################################
+######################################################################################################################################################
+######################################################################################################################################################
+
+######Plese follow instructions below to test LAM-PCR in silico dataset of 5750 (5711) sequences by using GENE-IS LAM mode
+
+1)Please provide correct path for the following variables in configuration file "configFile_LAM-PCR_pairedEnd.txt" in "GENE-IS_1.0" directory;
+ scriptDir, libDir, genomeVectorIndex, aligner, blatAligner, genomeVectorIndexBlat, skewer, bedTools, samtools, UCSCAnnoFile
+
+ Please see manual for installing above mentioned tools and for creating reference files as well.
+
+2)To run GENE-IS LAM-mode for this analysis
+Make directory with name of "result"
+
+3)Change configuration file for following 4 variables;
+
+a.In configuration file "configFile_LAM-PCR_pairedEnd.txt"  in "GENE-IS_1.0"  directory, in "forward" variable provide complete path of file named "r1.5750seq.LAMinsilico.gz". This file is present in "GENE-IS_1.0/testFiles" directory
+b.In configuration file "configFile_LAM-PCR_pairedEnd.txt"  in "GENE-IS_1.0"  directory, in "reverse" variable provide complete path of file named "r2.5750seq.LAMinsilico.gz". This file is present in "GENE-IS_1.0/testFiles" directory
+c.In configuration file "configFile_LAM-PCR_pairedEnd.txt"  in "GENE-IS_1.0"  directory, in "tagTableName" variable provide complete path of file named "tagTable5750seq.txt"  This file is present in "GENE-IS_1.0/testFiles" directory
+d. In configuration file "configFile_LAM-PCR_pairedEnd.txt"  in "GENE-IS_1.0"  directory, in "lamType" variable write this word; both
+
+4)Now run analysis by this command
+perl -I /USER-PATH/GENE-IS_1.0/lib /USER-PATH/GENE-IS_1.0/scripts/GENIS.pl -c /USER-PATH/GENE-IS_1.0/configFile_LAM-PCR_pairedEnd.txt -o /path-to-resultsDir/
+
+######################################################################################################################################################
+######################################################################################################################################################
+
+######Plese follow instructions below to test LAM-PCR in silico dataset taken from VISA consisting of 1000 sequences by using GENE-IS LAM mode
+
+1)Please provide correct path for the following variables in configuration file "configFile_LAM-PCR_pairedEnd.txt" in "GENE-IS_1.0" directory;
+ scriptDir, libDir, genomeVectorIndex, aligner, blatAligner, genomeVectorIndexBlat, skewer, bedTools, samtools, UCSCAnnoFile
+
+ Please see manual for installing above mentioned tools and for creating reference files as well.
+
+2)To run GENE-IS LAM-mode for this analysis
+Make directory with name of "result"
+
+3)Rename the file "forForward1000.fastq"  present in directory "GENE-IS_1.0/testFiles" to "MiS01_InSilicoFromVISA_1000_A_A_A_5LAM_A_A_A_A_MiS01_A_A_A_A_CTATATGTAT_AGTCAGTGTGGAAAATCTCTAGCA_A_A_CCTAACTGCTGTGCCACTGAATTCAGATC_ACTATCTAGCAT_CCTAACTGCTGTGCCACTGAATTCAGATC_.fastq"
+
+Copy this created file "MiS01_InSilicoFromVISA_1000_A_A_A_5LAM_A_A_A_A_MiS01_A_A_A_A_CTATATGTAT_AGTCAGTGTGGAAAATCTCTAGCA_A_A_CCTAACTGCTGTGCCACTGAATTCAGATC_ACTATCTAGCAT_CCTAACTGCTGTGCCACTGAATTCAGATC_.fastq" to the "result" directory, that was created in the above step 2.
+(It is the same dataset file taken from VISA web server, it has only been modified in a way to be comaptible with GENE-IS input format)
+
+4)Change configuration file for following 4 variables;
+
+a. In configuration file "configFile_LAM-PCR_pairedEnd.txt"  in "GENE-IS_1.0"  directory, in "forward" variable provide complete path of file named "MiS01_InSilicoFromVISA_1000_A_A_A_5LAM_A_A_A_A_MiS01_A_A_A_A_CTATATGTAT_AGTCAGTGTGGAAAATCTCTAGCA_A_A_CCTAACTGCTGTGCCACTGAATTCAGATC_ACTATCTAGCAT_CCTAACTGCTGTGCCACTGAATTCAGATC_.fastq". This is the file that you copied to the result directory as well in above step 4.
+b. In configuration file "configFile_LAM-PCR_pairedEnd.txt"  in "GENE-IS_1.0"  directory, in "reverse" variable provide complete path of file named "forReverse.gz"  This file is present in "GENE-IS_1.0/testFiles" directory
+c. In configuration file "configFile_LAM-PCR_pairedEnd.txt"  in "GENE-IS_1.0"  directory, in "tagTableName" variable provide complete path of file named "tagTabMiS01.txt"  This file is present in "GENE-IS_1.0/testFiles" directory
+d. In configuration file "configFile_LAM-PCR_pairedEnd.txt"  in "GENE-IS_1.0"  directory, in "lamType" variable write this word; extracting
+e. Comment the lines with variable "anchor" and "anchorMM"
+
+
+5)Now run analysis by this command
+perl -I /USER-PATH/GENE-IS_1.0/lib /USER-PATH/GENE-IS_1.0/scripts/GENIS.pl -c /USER-PATH/GENE-IS_1.0/configFile_LAM-PCR_pairedEnd.txt -o /path-to-resultsDir/
+
+######################################################################################################################################################
+######################################################################################################################################################
+
+######Plese follow instructions below to test targeted sequencing in silico dataset of 5650 sequences by using GENE-IS targeted sequencing mode
+
+1)Please provide correct path for the following variables in configuration file "configFile_targetedSequencing_pairedEnd.txt" in "GENE-IS_1.0" directory;
+scriptDir, libDir, genomeVectorIndex, aligner, blatAligner, genomeVectorIndexBlat, skewer, bedTools, samtools, UCSCAnnoFile
+
+Please see manual for installing above mentioned tools and for creating reference files as well.
+
+2)To run GENE-IS targeted sequencing mode for this analysis
+Make directory with name of "result"
+
+3)Change configuration file for following variables;
+
+a. In configuration file "configFile_targetedSequencing_pairedEnd.txt" in "GENE-IS_1.0" directory, in "forward" variable provide complete path of file named "r1.5600seq.TargetSeqInsilico.gz". This file is present in "GENE-IS_1.0/testFiles" directory
+
+b. In configuration file "configFile_targetedSequencing_pairedEnd.txt" in "GENE-IS_1.0" directory, in "reverse" variable provide complete path of file named "r2.5600seq.TargetSeqInsilico.gz". This file is present in "GENE-IS_1.0/testFiles" directory
+
+4)Now run analysis by this command
+perl -I /USER-PATH/GENE-IS_1.0/lib /USER-PATH/GENE-IS_1.0/scripts/GENIS.pl -c /USER-PATH/GENE-IS_1.0/configFile_LAM-PCR_pairedEnd.txt -o /path-to-resultsDir/
+
+######################################################################################################################################################
+######################################################################################################################################################

@@ -13,11 +13,16 @@ OUT_TES_PAIR_FILE="$GENIS/test/targetedSequencing/results/pairedEnd/testDataTS.R
 OUT_TES_SINGLE_FILE="$GENIS/test/targetedSequencing/results/singleEnd/testDataTS.ResultsClusteredAnnotated.csv"
 TEST_TES_PAIR_FILE="$GENIS/test/targetedSequencing/results/testDataTS.pair.csv"
 TEST_TES_SINGLE_FILE="$GENIS/test/targetedSequencing/results/testDataTS.single.csv"
+OUT_LAM_PAIR_FILE="$GENIS/test/LAM-PCR/results/testRunLAM.25-0.95-0.9-3-1000.ResultsClusteredAnnotated.csv"
+TEST_LAM_PAIR_FILE="$GENIS/test/LAM-PCR/testDataLAM.pair.csv"
+
 
 ERROR_ASSERT_NO_GENIS="Set the environment variable $GENIS (i.e. export GENIS=/path_to_/GENE-IS)"
 ERROR_ASSERT_TES_PAIR_DIFF="Output File ${TEST_TES_PAIR_FILE} is not the same as expected"
 ERROR_ASSERT_TES_SINGLE_DIFF="Output File ${TEST_TES_SINGLE_FILE} is not the same as expected"
+ERROR_ASSERT_LAM_PAIR_DIFF="Output File ${TEST_LAM_PAIR_FILE} is not the same as expected"
 ERROR_ASSERT_TES_NO_FILE="Output file ${OUT_TES_PAIR_FILE} not existing"
+ERROR_ASSERT_LAM_NO_FILE="Output file ${OUT_LAM_PAIR_FILE} not existing"
 COMMENT_LINE="###################################################################"
 
 if [ -z "$GENIS" ]; then
@@ -72,7 +77,21 @@ do
            "LAM-PCR")
 		rm -r $GENIS/test/LAM-PCR/results/* 2>/dev/null
                	perl -I $GENIS/lib/ $GENIS/scripts/GENIS.pl -o $GENIS/test/LAM-PCR/results -c $GENIS/configFile_LAM-PCR_pairedEnd.txt
-            	;;
+                echo "##################### Testing LAM-PCR Pair-ends Output #########################"
+                echo "Generated Output File $TEST_LAM_PAIR_FILE"
+                echo "Template Output File $OUT_LAM_PAIR_FILE"
+                if [ ! -f $OUT_LAM_PAIR_FILE ] ; then
+                        return_error "$ERROR_ASSERT_LAM_NO_FILE"
+                fi
+                if  ! cmp $TEST_LAM_PAIR_FILE   $OUT_LAM_PAIR_FILE > /dev/null 2>/dev/null; then
+                        return_error "$ERROR_ASSERT_LAM_PAIR_DIFF"
+                fi
+                echo $COMMENT_LINE
+                echo "LAM-PCR Pair worked as expected!"
+                echo $COMMENT_LINE
+		;;
+
+
 	   "All")
 		rm $GENIS/test/targetedSequencing/results/pairedEnd/*
                 perl -I ../lib/ $GENIS/scripts/GENIS.pl -o $GENIS/test/targetedSequencing/results/pairedEnd/ -c $GENIS/configFile_targetedSequencing_pairedEnd.txt

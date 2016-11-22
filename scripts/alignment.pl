@@ -5,6 +5,7 @@ use Getopt::Long;
 use Cwd;
 use FindBin;
 use lib "$FindBin::Bin";
+#use Mosaic;
 use Scalar::Util qw(looks_like_number);
 use Scalar::Util qw(isvstring);
 
@@ -144,7 +145,7 @@ if ($type eq "AGILENT") {
 			#system("echo \"awk  -F $scripts_dir/correctSam.awk $output_dir/$aOut_value.sam > app.sam;mv app.sam  $output_dir/$aOut_value.sam\"");
 			#`awk -f $scripts_dir/correctSam.awk $output_dir/$aOut_value.sam > app.sam;mv app.sam  $output_dir/$aOut_value.sam`;
 			`$samtools view -Sb $output_dir/$aOut_value.sam  > $output_dir/$aOut_value.bam `;
-			`$samtools sort $output_dir/$aOut_value.bam $output_dir/$aOut_value.sorted `;
+			`$samtools sort -n $output_dir/$aOut_value.bam $output_dir/$aOut_value.sorted `;
 			`$samtools index $output_dir/$aOut_value.sorted.bam `;
 			`$samtools rmdup $output_dir/$aOut_value.sorted.bam $output_dir/$aOut_value.nodup.bam `;
 			`$samtools index $output_dir/$aOut_value.nodup.bam `;

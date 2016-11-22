@@ -69,7 +69,7 @@ notMatchThreshold=1000
 alignmentOut = completAlignment
 
 #Provide path to the directory containing BWA aligner based index files for refernce genome
-genomeVectorIndex=$GENIS/test/datasets/testGenomeVector.fa
+genomeVectorIndex=$GENIS/test/datasets/testOnlyGenome.fa
 ############################################################################
 #############################################################################
 ##                      Third-party tools
@@ -80,7 +80,7 @@ aligner     = $GENIS/tools/bin/bwa
 #Path to the secondary aligner. (BLAT)
 blatAligner =  $GENIS/tools/bin/blat
 #Path to the BLAT indexed file of reference genome.
-genomeVectorIndexBlat=$GENIS/test/datasets/testGenomeVector.fa.2bit
+genomeVectorIndexBlat=$GENIS/test/datasets/testOnlyGenome.fa.2bit
 #############################################################################
 #Path to the trimming and filtering tool (Skewer)
 skewer = $GENIS/tools/bin/skewer
@@ -93,18 +93,4 @@ bedTools= $GENIS/tools/bin/bedtools
 #a complete UCSC refSeq table downloaded from UCSC (should be in text format)
 UCSCAnnoFile= $GENIS/test/datasets/UCSC.anno.table_hg38.txt
 ############################################################################
-############################################################################
-#For approx IS extraction (TRUE/FALSE)
-approxIS=FALSE
-#Provide path to individual separate BWA based indexed fasta files for vector and for reference genome respectively.
-vectorIndexOut = $GENIS/test/datasets/VECTOR.fa
-genomeIndexOut = $GENIS/test/datasets/testOnlyGenome.fa
-############################################################################
-############################################################################
-#For extra stringent filtering of IS reads
-#(Recommended only in cases where vector contains transgene which is higly homologus to refernce genome region)
-#(It can also cause loss of real IS)
-extraFilt=FALSE
-############################################################################
-############################################################################
-############################################################################                                                   
+############################################################################                                               

@@ -1,3 +1,3 @@
-Total aligned Reads:  396512
-Proper aligned Reads:  793032
-Potential vector-genome Reads:  54202
+Total aligned Reads:  401892
+Proper aligned Reads:  803782
+Potential vector-genome Reads:  56892

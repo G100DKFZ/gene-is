@@ -42,7 +42,11 @@ alignmentOut = completAlignment
 
 ##Provide path to the directory containing BWA aligner based index files and fasta file for refernce+vector genome
 genomeVectorIndex=$GENIS/test/datasets/testGenomeVector.fa 
-genomeVector= $GENIS/test/datasets/VECTOR.fa
+genomeVector= $GENIS/test/datasets/testGenomeVector.fa
+
+#Also provide path to separate indexed fasta files of vector and reference genome respectively
+vectorIndexOut = $GENIS/test/datasets/VECTOR.fa
+genomeIndexOut = $GENIS/test/datasets/testOnlyGenome.fa
 
 #Specify the exact vector name that is mentioned in the refernce/vector fasta sequence file
 vectorString = VECTOR
@@ -76,13 +80,6 @@ bedTools= $GENIS/tools/bin/bedtools
 #Files path required for annotation
 #a complete UCSC refSeq table downloaded from UCSC (should be in text format)
 UCSCAnnoFile= $GENIS/test/datasets/UCSC.anno.table_hg38.txt
-############################################################################
-############################################################################
-#For approx IS extraction (TRUE/FALSE)
-approxIS=FALSE
-#Provide path to individual separate BWA based indexed fasta files for vector and for reference genome respectively.
-vectorIndexOut = $GENIS/test/datasets/VECTOR.fa
-genomeIndexOut = $GENIS/test/datasets/testOnlyGenome.fa
 ############################################################################
 ############################################################################
 #For extra stringent filtering of IS reads

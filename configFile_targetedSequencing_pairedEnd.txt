@@ -53,10 +53,10 @@ vectorString = VECTOR
 #Minimum alignment identity percentage for re-alignment step with BLAT (default value 95)
 minIden=95
 #This is the value between primary alignment and secondary alignment for a sequence read (default value 0.9)
-alScore=0.9
+alScore=0.95
 #For topographical clustering that is genome IS position based clustering user can specify range of clustering (default value 10)
 range=3
-#This parameter regulates the sensibility/specificity of coft clip extraction 0=low, 1=medium,2=high specificity
+#This parameter regulates the sensibility/specificity of soft clip extraction 0=low, 1=medium,2=high specificity
 specificity=0
 #############################################################################
 #############################################################################

@@ -1,0 +1,98 @@
+#########################################################################
+#######	     Configuration File for Targeted Sequencing 	   ########
+#######    (SureSelect/Agilent) Paired End Data Analysis           ########
+###########################################################################
+#Path to script directory (script directory is in main folder of GENE-IS_1.0)
+scriptDir=/home/saira2/temp/gene-is-master/scripts
+#Path to libraries containing directory (lib directory is in main folder of GENE-IS_1.0
+libDir=/home/saira2/temp/gene-is-master/lib
+#Data analysis type is Targeted Sequencing (SureSelect/AGILENT) (DO NOT CHANGE)
+type=AGILENT
+#Number of possible parallel alignments
+threads=2
+
+#############################################################################
+#############################################################################
+## 			Input data files 
+#############################################################################
+## Provide path to both forward and reverse FATSQ files
+forward= /home/saira2/temp/gene-is-master/testFiles/r1.5600seq.TargetSeqInsilico.gz
+reverse =/home/saira2/temp/gene-is-master/testFiles/r2.5600seq.TargetSeqInsilico.gz
+#provide sample name PREFIX that would be used as prefix for final result file
+#Please do not include any space or strange characters
+sampleName = testDataTS
+#############################################################################
+#############################################################################
+## 	Quality filtration and adapter trimming parameters
+#############################################################################
+#Quality filtration values (default value 20 or provide integer values only)
+qual= 20
+
+#Use default Illumina adapters to remove from raw fastq forward and reverse files or provide your own
+#Adapter to trim from forward file
+adaptF = GATCGGAAGAGCACACGTCTGAACTCCAGTCAC
+#Adapter to trim from reverse file
+adaptR = AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT   
+#Use default output file names for forward and reverse files (DO NOT CHANGE)
+suffOut = filtTrim
+
+#############################################################################
+#############################################################################
+## 	Reference fasta file and indexed files
+#############################################################################
+# The following parameter contain the alignment filename (DO NOT CHANGE)
+alignmentOut = completAlignment
+
+##Provide path to the directory containing BWA aligner based index files and fasta file for refernce+vector genome
+genomeVectorIndex=/home/saira2/INDEXES/hg38.v2_vectorSeq.fa
+genomeVector= /home/saira2/INDEXES/hg38.v2_vectorSeq.fa
+
+#Specify the exact vector name that is mentioned in the refernce/vector fasta sequence file
+vectorString = vectorSeq
+
+#Minimum alignment identity percentage for re-alignment step with BLAT (default value 95)
+minIden=95
+#This is the value between primary alignment and secondary alignment for a sequence read (default value 0.9)
+alScore=0.95
+#For topographical clustering that is genome IS position based clustering user can specify range of clustering (default value 10)
+range=3
+#This parameter regulates the sensibility/specificity of coft clip extraction 0=low, 1=medium,2=high specificity
+specificity=0
+#############################################################################
+#############################################################################
+## 			Third-party tools
+#Provide path to these third-party tools
+#############################################################################
+#Provide path to the BWA aligner
+aligner     = /home/saira2/temp/gene-is-master/tools/bin/bwa
+#############################################################################
+#Path to the secondary aligner. (BLAT)
+#megaAligner = megablast
+blatAligner = /home/saira2/temp/gene-is-master/tools/bin/blat
+#Path to the BLAT indexed file of refernce genome and vector.
+genomeVectorIndexBlat=/home/saira2/INDEXES/hg38.v2_vectorSeq.fa.2bit
+#Path to the trimming and filtering tool (Skewer)
+skewer = /home/saira2/temp/gene-is-master/tools/bin/skewer
+#Path to the Samtools
+samtools= /home/saira2/temp/gene-is-master/tools/bin/samtools
+#Path to the bedtools
+bedTools= /home/saira2/temp/gene-is-master/tools/bin/bedtools
+############################################################################
+#Files path required for annotation
+#a complete UCSC refSeq table downloaded from UCSC (should be in text format)
+UCSCAnnoFile= /home/saira2/temp/gene-is-master/files/UCSC.anno.table_hg38.txt
+############################################################################
+############################################################################
+#For approx IS extraction (TRUE/FALSE)
+approxIS=FALSE
+#Provide path to individual separate BWA based indexed fasta files for vector and for reference genome respectively.
+vectorIndexOut = $GENIS/test/datasets/VECTOR.fa
+genomeIndexOut = $GENIS/test/datasets/testOnlyGenome.fa
+############################################################################
+############################################################################
+#For extra stringent filtering of IS reads TRUE/FALSE
+#(Recommended only in cases where vector contains transgene which is highly homologus to reference genome region)
+#(It can also cause loss of real IS)
+extraFilt=FALSE
+############################################################################
+############################################################################
