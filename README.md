@@ -18,9 +18,10 @@ cd gene-is
 ```
 
 
-## Testing
+### Testing
 
-In order to test GENE-IS installation was successful;
+To test that the installation was successful we prepared `testGenis.sh`, a simple
+script that run a fast analysis on a set of reduced datasets.
 
 * Type the following command on terminal for changing directory to scripts
 ```
@@ -54,13 +55,32 @@ If installation was successful following message will appear on the terminal
 "LAM-PCR Pair worked as expected!"
 
 
+* In order to test the datasets used in the Manuscript for GENE-IS benchmarking, please see "README" file in "/path_to_location/gene-is/testFiles" directory
 
 ## Dependencies
 
 ### Third-party tools
 
 GENE-IS depends on several third party tools which are open source and are freely available.
-All these tools are already provided within the GENE-IS package in tools/bin directory.
+All these tools are already provided within the GENE-IS package in `$GENIS/tools/bin` directory.
+This folder is referred as default location for third party tools in the configuration files
+```
+#############################################################################
+##                      Third-party tools
+#Provide path to these third-party tools
+#############################################################################
+#Provide path to the BWA aligner
+aligner     = $GENIS/tools/bin/bwa
+#Path to the secondary aligner. (BLAT)
+blatAligner =  $GENIS/tools/bin/blat
+#Path to the trimming and filtering tool (Skewer)
+skewer = $GENIS/tools/bin/skewer
+#Path to the Samtools
+samtools= $GENIS/tools/bin/samtools
+#Path to the bedtools
+bedTools= $GENIS/tools/bin/bedtools
+```
+
 
 For user information names of tools and related links are provided here;
 Tool 		Version 	URL
@@ -85,20 +105,14 @@ The required Perl libraries are pre-packaged within the tool ("lib" dir in GENE-
 ## Configuration File
 GENE-IS has specific configuration files for each mode of analysis; LAM-PCR, TES paired and TES single end configuration files.
 Only the relevant configuration file should be modified for particular analysis.
-For testing GENE-IS installation user does not need to change any paramter in the configurtaion file.
+For testing GENE-IS installation user does not need to change any parameter in the configuration file.
 The templates are in the gene-is path; i.e.
 ```
 $GENIS/configFile_targetedSequencing_pairedEnd.txt
 ```
-* Analysis
-
-> In order to test other datasets used in the Manuscript for GENE-IS benchmarking, please see "README" file in "/path_to_location/gene-is/testFiles" directory
 
 
-### Synthetic and test guidelines
 
-* Synthetic datasets
-* Other guidelines
 
 ### Contacts ###
 
