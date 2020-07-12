@@ -1,6 +1,11 @@
 # README #
 (GENE-IS_1.0)
 
+Please cite the research article, if you use GENE-IS: Saira Afzal et al., 2016. GENE-IS: time-efficient and accurate analysis of viral integration events in large-scale gene therapy data. Molecular Therapy - Nucleic Acids 2016, vol. 6:133-139. DOI:https://doi.org/10.1016/j.omtn.2016.12.001
+
+##
+##
+
 GENE-IS is a pipeline for the extraction of integration sites from next-generation sequencing data of clinical and preclinical gene therapy studies.
 It is specifically designed in order to accept the sequencing reads originated from different protocols like LAM (linear amplification mediated) PCR and Targeted Sequencing (SureSelect/AGILENT) methods.
 
@@ -117,4 +122,4 @@ $GENIS/configFile_targetedSequencing_pairedEnd.txt
 ### Contacts ###
 
 * Contact: raffaele.fronza@nct-heidelberg.de
-* Contact: saira.afzal@nct-heidelberg.de
+* Contact: saira.afzal@genewerk.de
